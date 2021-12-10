@@ -23,7 +23,7 @@ public class CreditCardServiceImpl implements CreditCardService {
 
 		try {
 			log.info("creditCardNumber :" + creditCardNumber);
-			String decryptedCreditCardNumber = decryptionUtil.decrypt(creditCardNumber);
+			String decryptedCreditCardNumber = decryptionUtil.decryptFromCloud(creditCardNumber);
 			log.info("decryptedCreditCardNumber :" + decryptedCreditCardNumber);
 			
 		} catch (Exception ex) {
