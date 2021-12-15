@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.CreditCardInfo;
+import com.example.demo.model.MessageDto;
 import com.example.demo.model.UserDto;
 import com.example.demo.service.CreditCardService;
 import com.example.demo.util.DecryptionUtil;
@@ -42,15 +43,16 @@ public class CreditCardServiceImpl implements CreditCardService {
 		return CreditCardInfo.builder().expiry(new Date()).issued(new Date()).build();
 	}
 	
-	public CreditCardInfo getCreditCardDetails(String message) {
+	public CreditCardInfo getCreditCardDetails(MessageDto messageDto) {
 
+		String message=messageDto.getMessage();
 		try {
-			log.info("message :" + message);
+		log.info("MessageDTO : {}",objectMapper.writeValueAsString(messageDto));	
 			String decryptedmessage = decryptionUtil.decryptFromCloud(message);
-			log.info("Decryptedmessage :" +decryptedmessage );
+			
 			
 			UserDto userdto = objectMapper.readValue(decryptedmessage,UserDto.class);
-			log.info(objectMapper.writeValueAsString(UserDto.class));
+			log.info("UserDto : {}",objectMapper.writeValueAsString(userdto));
 			
 		} catch (Exception ex) {
 			log.error("Exception while decrypting", ex);

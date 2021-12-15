@@ -39,11 +39,9 @@ public class CreditCardController {
 	@PostMapping("/getcreditcard")
 	public CreditCardInfo getCreditCardInfo(@RequestBody MessageDto messageDto) throws JsonProcessingException {
 		
-		
-		
-		log.info(objectMapper.writeValueAsString(messageDto));
+		;
 
-		return service.getCreditCardDetails(messageDto.getMessage());
+		return service.getCreditCardDetails(messageDto);
 
 	}
 
