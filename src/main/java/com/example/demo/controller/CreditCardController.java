@@ -10,22 +10,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.CreditCardInfo;
 import com.example.demo.model.MessageDto;
-import com.example.demo.model.UserDto;
 import com.example.demo.service.CreditCardService;
-import com.example.demo.service.impl.CreditCardServiceImpl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
 @RestController
 @RequestMapping("/creditcard")
 public class CreditCardController {
 
 	@Autowired
 	CreditCardService service;
-	
+
 	@Autowired
 	ObjectMapper objectMapper;
 
@@ -36,14 +31,18 @@ public class CreditCardController {
 
 	}
 	
+	@GetMapping("getdetails/jwt/{jwtstring}")
+	public CreditCardInfo getCreditCardInfoWithJWT(@PathVariable("jwtstring") String jwtstring) {
+
+		return service.getCreditCardInfoWithJWT(jwtstring);
+
+	}
+
 	@PostMapping("/getcreditcard")
 	public CreditCardInfo getCreditCardInfo(@RequestBody MessageDto messageDto) throws JsonProcessingException {
-		
-		;
 
 		return service.getCreditCardDetails(messageDto);
 
 	}
-
 
 }

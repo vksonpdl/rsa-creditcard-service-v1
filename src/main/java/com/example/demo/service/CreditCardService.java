@@ -9,5 +9,7 @@ public interface CreditCardService {
 
 
 	public CreditCardInfo getCreditCardDetails(MessageDto messageDto);
+	
+	public CreditCardInfo getCreditCardInfoWithJWT (String jwtToken);
 
 }

@@ -1,7 +1,5 @@
 package com.example.demo.model;
 
-import java.util.Date;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import lombok.AllArgsConstructor;
@@ -14,9 +12,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class CreditCardInfo {
+public class UserInfo {
 	
-	private Date expiry;
-	private Date issued;
-	
+	private Long id;
+	private String name;
+	private String creditCardNumber;
+
 }
